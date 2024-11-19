@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Saitemp</string>
+    <string name="title_activity_navegacion">NavegacionActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Enecon</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Salir</string>
+
+    <string name="menu_home">Formularios guardados</string>
+    <string name="orden_trabajo">Ordenes de trabajo</string>
+    <string name="formulario">Formulario</string>
+    <string name="ordenes_trabajo">Ordenes de trabajo</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- TODO: Remove or change this placeholder text -->
+
+</resources>

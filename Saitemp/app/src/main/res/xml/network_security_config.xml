@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config>
+        <domain includeSubdomains="true">debidadiligencia.saitempsa.com</domain>
+        <trust-anchors>
+            <!-- Referencia al certificado almacenado en la carpeta res/raw -->
+            <certificates src="@raw/srv_saitemp03"/>
+        </trust-anchors>
+    </domain-config>
+</network-security-config>

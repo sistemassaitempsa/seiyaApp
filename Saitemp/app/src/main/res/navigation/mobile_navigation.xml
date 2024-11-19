@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/crm">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.saitemp.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/crm"
+        android:name="com.example.saitemp.ui.actareuniondd.ActaReunionDDFragment"
+        android:label="CRM"
+        tools:layout="@layout/fragment_acta_reunion_d_d" />
+    <fragment
+        android:id="@+id/crm_guardados"
+        android:name="com.example.saitemp.ui.formularios_crm_guardados.CrmGuardadosFragment"
+        android:label="Formularios visita"
+        tools:layout="@layout/fragment_crm_guardados" />
+</navigation>

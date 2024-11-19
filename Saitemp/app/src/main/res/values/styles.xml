@@ -1,0 +1,5 @@
+<resources>
+<style name="SpinnerTextStyle">
+    <item name="android:textSize">14sp</item> <!-- Ajusta el tamaño según tu preferencia -->
+</style>
+</resources>
