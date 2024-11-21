@@ -13,12 +13,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Compromiso"
+        app:counterEnabled="true"
+        app:counterMaxLength="4000"
         app:errorEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tie_compromiso"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:maxLength="4000" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -52,13 +55,16 @@
         android:id="@+id/til_observacion_compromiso"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:counterEnabled="true"
+        app:counterMaxLength="3000"
         app:errorEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tie_observacion_compromiso"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Observación" />
+            android:hint="Observación"
+            android:maxLength="3000" />
     </com.google.android.material.textfield.TextInputLayout>
 
 </LinearLayout>

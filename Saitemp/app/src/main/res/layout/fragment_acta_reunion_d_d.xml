@@ -290,12 +290,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Observaciones"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="6000"
                     app:errorEnabled="true">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/tie_observacion"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:maxLength="6000" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <LinearLayout
@@ -387,44 +390,53 @@
                         android:layout_height="wrap_content" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/til_objetivo"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Objetivo"
-                    app:errorEnabled="true">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/tie_objetivo"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_objetivo"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_height="match_parent"
+                        android:hint="Objetivo"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="1000"
+                        app:errorEnabled="true">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/til_alcance"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Alcance"
-                    app:errorEnabled="true">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tie_objetivo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:maxLength="1000" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/tie_alcance"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_alcance"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_height="match_parent"
+                        android:hint="Alcance"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="500"
+                        app:errorEnabled="true">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/til_tema_visita"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Tema de la visita"
-                    app:errorEnabled="true">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tie_alcance"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:maxLength="500" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/tie_tema_visita"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_tema_visita"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_height="match_parent"
+                        android:hint="Tema de la visita"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="3000"
+                        app:errorEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tie_tema_visita"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:maxLength="3000" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
                     android:id="@+id/tv_compromisos"

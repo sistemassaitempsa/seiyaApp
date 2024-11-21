@@ -38,6 +38,7 @@ import android.provider.MediaStore;
 import android.provider.OpenableColumns;
 import android.provider.Settings;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.Base64;
@@ -1595,6 +1596,7 @@ public void agregarEvidencia(String nombre, String path) {
         editTextEstadoCompromiso.setTag(posicionCompromiso);
         posicionCompromiso++;
 
+
         TextInputEditText editTextCompromiso = (TextInputEditText) textInputLayout1.getEditText();
         editTextEstadoCompromiso.setId(View.generateViewId());
         editTextCompromiso.setPadding(50, 50, 50, 50);
@@ -1602,6 +1604,15 @@ public void agregarEvidencia(String nombre, String path) {
         TextInputEditText editTextObservacion = (TextInputEditText) textInputLayout4.getEditText();
         editTextEstadoCompromiso.setId(View.generateViewId());
         editTextObservacion.setPadding(50, 50, 50, 50);
+
+        InputFilter[] compromisoFilters = new InputFilter[]{new InputFilter.LengthFilter(4000)};
+        InputFilter[] observacionFilters = new InputFilter[]{new InputFilter.LengthFilter(3000)};
+        editTextCompromiso.setFilters(compromisoFilters);
+        editTextObservacion.setFilters(observacionFilters);
+        textInputLayout1.setCounterEnabled(true);
+        textInputLayout1.setCounterMaxLength(4000);
+        textInputLayout4.setCounterEnabled(true);
+        textInputLayout4.setCounterMaxLength(3000);
 
         inputs.add(editTextCompromiso);
         inputs.add(editTextResponsable);
