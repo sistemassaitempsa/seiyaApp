@@ -111,7 +111,6 @@ public class SincronizarFormularioDebidaDiligencia {
 
             if (isNetworkAvailable()) {
                 enviarAlServidor("https://debidadiligencia.saitempsa.com:8484/aplicaciones/api/public/api/v1/seguimientocrm2", formulario1);
-//                esrtructuraCorreos();
             } else {
                 Toast.makeText(context.getApplicationContext(), "No tiene conexión a internet", Toast.LENGTH_SHORT).show();
             }

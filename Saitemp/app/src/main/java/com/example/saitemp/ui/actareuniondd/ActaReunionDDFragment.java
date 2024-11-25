@@ -119,6 +119,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ActaReunionDDFragment extends Fragment {
     private RequestQueue requestQueue;
@@ -149,7 +150,8 @@ public class ActaReunionDDFragment extends Fragment {
     private ActaReunionDDViewModel mViewModel;
     private TextInputLayout til_sede, til_proceso, til_solicitante, til_hora_inicio, til_tema_visita,
             til_nit, til_numero_documento, til_razon_social, til_telefono, til_correo, til_visitado,
-            til_cargo_visitado, til_objetivo, til_alcance_til_hora_inicio, til_cierra_radicado;
+            til_cargo_visitado, til_objetivo, til_alcance_til_hora_inicio, til_cierra_radicado, til_tipo_atencion,
+            til_visitante, til_cargo_visitante, til_estado, til_pqrsf, til_responsable, til_alcance ;
     private TextInputEditText tie_proceso, tie_sede, tie_solicitante, tie_tipo_atencion, tie_razon_social,
             tie_pqrs, tie_responsable, tie_visitante, tie_cargo_visitante, tie_nit, tie_telefono,
             tie_correo, tie_visitado, tie_cargo_visitado, tie_objetivo, tie_alcance, tie_tema_visita,
@@ -193,6 +195,9 @@ public class ActaReunionDDFragment extends Fragment {
 
     private String correo_responsable = "";
 
+    private View contextoVew;
+    private  ScrollView scrollView;
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -208,57 +213,59 @@ public class ActaReunionDDFragment extends Fragment {
         locationManagerHelper = new LocationManagerHelper(requireContext());
         permisosGps();
 
+        contextoVew = view;
+
         linearLayout = view.findViewById(R.id.linearLayoutContainer);
-        TextInputEditText tie_proceso = view.findViewById(R.id.tie_proceso);
-        TextInputEditText tie_sede = view.findViewById(R.id.tie_sede);
-        TextInputEditText tie_solicitante = view.findViewById(R.id.tie_solicitante);
-        TextInputEditText tie_tipo_atencion = view.findViewById(R.id.tie_tipo_atencion);
-        TextInputEditText tie_nit = view.findViewById(R.id.tie_nit);
-        TextInputEditText tie_razon_social = view.findViewById(R.id.tie_razon_social);
-        TextInputEditText tie_telefono = view.findViewById(R.id.tie_telefono);
-        TextInputEditText tie_correo = view.findViewById(R.id.tie_correo);
-        TextInputEditText tie_visitado = view.findViewById(R.id.tie_visitado);
-        TextInputEditText tie_cargo_visitado = view.findViewById(R.id.tie_cargo_visitado);
-        TextInputEditText tie_objetivo = view.findViewById(R.id.tie_objetivo);
-        TextInputEditText tie_alcance = view.findViewById(R.id.tie_alcance);
-        TextInputEditText tie_tema_visita = view.findViewById(R.id.tie_tema_visita);
-        TextInputEditText tie_estado = view.findViewById(R.id.tie_estado);
-        TextInputEditText tie_pqrs = view.findViewById(R.id.tie_pqrsf);
-        TextInputEditText tie_hora_inicio = view.findViewById(R.id.tie_hora_inicio);
-        TextInputEditText tie_responsable = view.findViewById(R.id.tie_responsable);
-        TextInputEditText tie_visitante = view.findViewById(R.id.tie_visitante);
-        TextInputEditText tie_cargo_visitante = view.findViewById(R.id.tie_cargo_visitante);
-        TextInputEditText tie_observacion = view.findViewById(R.id.tie_observacion);
-        TextInputEditText tie_numero_documento = view.findViewById(R.id.tie_numero_documento);
-        TextInputEditText tie_cierra_radicado = view.findViewById(R.id.tie_cierra_radicado);
-        TextInputLayout til_sede = view.findViewById(R.id.til_sede);
-        TextInputLayout til_proceso = view.findViewById(R.id.til_proceso);
-        TextInputLayout til_solicitante = view.findViewById(R.id.til_solicitante);
-        TextInputLayout til_tipo_atencion = view.findViewById(R.id.til_tipo_atencion);
-        TextInputLayout til_visitante = view.findViewById(R.id.til_visitante);
-        TextInputLayout til_cargo_visitante = view.findViewById(R.id.til_cargo_visitante);
-        TextInputLayout til_estado = view.findViewById(R.id.til_estado);
-        TextInputLayout til_pqrsf = view.findViewById(R.id.til_pqrsf);
-        TextInputLayout til_responsable = view.findViewById(R.id.til_responsable);
-        TextInputLayout til_hora_inicio = view.findViewById(R.id.til_hora_inicio);
-        TextInputLayout til_nit = view.findViewById(R.id.til_nit);
-        TextInputLayout til_numero_documento = view.findViewById(R.id.til_numero_documento);
-        TextInputLayout til_razon_social = view.findViewById(R.id.til_razon_social);
-        TextInputLayout til_telefono = view.findViewById(R.id.til_telefono);
-        TextInputLayout til_correo = view.findViewById(R.id.til_correo);
-        TextInputLayout til_visitado = view.findViewById(R.id.til_visitado);
-        TextInputLayout til_cargo_visitado = view.findViewById(R.id.til_cargo_visitado);
-        TextInputLayout til_objetivo = view.findViewById(R.id.til_objetivo);
-        TextInputLayout til_alcance = view.findViewById(R.id.til_alcance);
-        TextInputLayout til_tema_visita = view.findViewById(R.id.til_tema_visita);
-        TextInputLayout til_cierra_radicado = view.findViewById(R.id.til_cierra_radicado);
+        tie_proceso = view.findViewById(R.id.tie_proceso);
+        tie_sede = view.findViewById(R.id.tie_sede);
+        tie_solicitante = view.findViewById(R.id.tie_solicitante);
+        tie_tipo_atencion = view.findViewById(R.id.tie_tipo_atencion);
+        tie_nit = view.findViewById(R.id.tie_nit);
+        tie_razon_social = view.findViewById(R.id.tie_razon_social);
+        tie_telefono = view.findViewById(R.id.tie_telefono);
+        tie_correo = view.findViewById(R.id.tie_correo);
+        tie_visitado = view.findViewById(R.id.tie_visitado);
+        tie_cargo_visitado = view.findViewById(R.id.tie_cargo_visitado);
+        tie_objetivo = view.findViewById(R.id.tie_objetivo);
+        tie_alcance = view.findViewById(R.id.tie_alcance);
+        tie_tema_visita = view.findViewById(R.id.tie_tema_visita);
+        tie_estado = view.findViewById(R.id.tie_estado);
+        tie_pqrs = view.findViewById(R.id.tie_pqrsf);
+        tie_hora_inicio = view.findViewById(R.id.tie_hora_inicio);
+        tie_responsable = view.findViewById(R.id.tie_responsable);
+        tie_visitante = view.findViewById(R.id.tie_visitante);
+        tie_cargo_visitante = view.findViewById(R.id.tie_cargo_visitante);
+        tie_observacion = view.findViewById(R.id.tie_observacion);
+        tie_numero_documento = view.findViewById(R.id.tie_numero_documento);
+        tie_cierra_radicado = view.findViewById(R.id.tie_cierra_radicado);
+        til_sede = view.findViewById(R.id.til_sede);
+        til_proceso = view.findViewById(R.id.til_proceso);
+        til_solicitante = view.findViewById(R.id.til_solicitante);
+        til_tipo_atencion = view.findViewById(R.id.til_tipo_atencion);
+        til_visitante = view.findViewById(R.id.til_visitante);
+        til_cargo_visitante = view.findViewById(R.id.til_cargo_visitante);
+        til_estado = view.findViewById(R.id.til_estado);
+        til_pqrsf = view.findViewById(R.id.til_pqrsf);
+        til_responsable = view.findViewById(R.id.til_responsable);
+        til_hora_inicio = view.findViewById(R.id.til_hora_inicio);
+        til_nit = view.findViewById(R.id.til_nit);
+        til_numero_documento = view.findViewById(R.id.til_numero_documento);
+        til_razon_social = view.findViewById(R.id.til_razon_social);
+        til_telefono = view.findViewById(R.id.til_telefono);
+        til_correo = view.findViewById(R.id.til_correo);
+        til_visitado = view.findViewById(R.id.til_visitado);
+        til_cargo_visitado = view.findViewById(R.id.til_cargo_visitado);
+        til_objetivo = view.findViewById(R.id.til_objetivo);
+        til_alcance = view.findViewById(R.id.til_alcance);
+        til_tema_visita = view.findViewById(R.id.til_tema_visita);
+        til_cierra_radicado = view.findViewById(R.id.til_cierra_radicado);
         Button btn_add_imput = view.findViewById(R.id.btn_add_imput);
         Button btn_carga_archivo = view.findViewById(R.id.btn_carga_archivo);
         MaterialButton sincronizar_formulario = view.findViewById(R.id.sincronizar_formulario);
         MaterialButton guardar_formulario = view.findViewById(R.id.guardar_formulario);
         MaterialButton agregar_formulario = view.findViewById(R.id.agregar_formulario);
         MaterialButton eliminar_formulario = view.findViewById(R.id.eliminar_formulario);
-        ScrollView scrollView = view.findViewById(R.id.scroll);
+        scrollView = view.findViewById(R.id.scroll);
         indexOfExistingField = linearLayout.indexOfChild(view.findViewById(R.id.tv_compromisos));
 
         linearLayout.setVisibility(View.GONE);
@@ -392,6 +399,7 @@ public class ActaReunionDDFragment extends Fragment {
         recyclerClientes.setLayoutManager(new LinearLayoutManager(getContext()));
 
         recyclerInvisible();
+
 
         tie_proceso.addTextChangedListener(new GenericTextWatcher(adapterProcesos));
         tie_sede.addTextChangedListener(new GenericTextWatcher(adapterSedes));
@@ -818,6 +826,7 @@ public class ActaReunionDDFragment extends Fragment {
                     }
 
                     String sede = tie_sede.getText().toString().trim();
+
                     String proceso = tie_proceso.getText().toString().trim();
                     String solicitante = tie_solicitante.getText().toString().trim();
                     String medio_atencion = tie_tipo_atencion.getText().toString().trim();
@@ -827,6 +836,7 @@ public class ActaReunionDDFragment extends Fragment {
                     } else {
                         nit = tie_numero_documento.getText().toString().trim();
                     }
+
                     String razon_social = tie_razon_social.getText().toString().trim();
                     String telefono = tie_telefono.getText().toString().trim();
                     String correo = tie_correo.getText().toString().trim();
@@ -843,6 +853,28 @@ public class ActaReunionDDFragment extends Fragment {
                     String hora_inicio = tie_hora_inicio.getText().toString().trim();
                     String observacion = tie_observacion.getText().toString().trim();
                     String cierra_radicado = tie_cierra_radicado.getText().toString().trim();
+
+                    if(sede.isEmpty()){
+                        sede_id = 0;
+                    }if(proceso.isEmpty()){
+                        proceso_id = 0;
+                    }if(solicitante.isEmpty()){
+                        solicitante_id = 0;
+                    }if(medio_atencion.isEmpty()){
+                        medio_atencion_id = 0;
+                    }if(nit.isEmpty()){
+                        nit_id = 0;
+                    }if(visitante.isEmpty()){
+                        visitante_id = 0;
+                    }if(cargo_visitante.isEmpty()){
+                        cargo_visitante_id = 0;
+                    }if(estado_pqrsf.isEmpty()){
+                        estado_pqrsf_id = 0;
+                    }if(pqrsf.isEmpty()){
+                        pqrsf_id = 0;
+                    }if(responsable.isEmpty()){
+                        responsable_id = 0;
+                    }
 
                     List<Asistente> asistentesFormulario = new ArrayList<>();
                     asistentesFormulario = adapterAsistentes.getEmpleados();
@@ -1134,7 +1166,6 @@ public class ActaReunionDDFragment extends Fragment {
         });
 
         if (getArguments() != null) {
-            Log.d("arguments", "" + getArguments());
             id_formulario = getArguments().getInt("id");
             actualizar = getArguments().getBoolean("actualizar");
             ConsultaFormularioGuardado consultaFormulario = new ConsultaFormularioGuardado(getContext());
@@ -1464,32 +1495,32 @@ public class ActaReunionDDFragment extends Fragment {
         });
     }
 
-public void agregarEvidencia(String nombre, String path) {
-    // Verifica si el adaptador es null y lo inicializa si es necesario
-    if (adapterEvidencia == null) {
-        evidencias = new ArrayList<>();
-        adapterEvidencia = new AdapterEvidencia(evidencias);
-        recyclerEvidencia.setAdapter(adapterEvidencia);
-    } else if (actualizar) {
-        // Solo actualiza evidencias si no es null
-        List<Evidencia> nuevaLista = adapterEvidencia.getEvidencias();
-        if (nuevaLista != null) {
-            evidencias = nuevaLista;
+    public void agregarEvidencia(String nombre, String path) {
+        // Verifica si el adaptador es null y lo inicializa si es necesario
+        if (adapterEvidencia == null) {
+            evidencias = new ArrayList<>();
+            adapterEvidencia = new AdapterEvidencia(evidencias);
+            recyclerEvidencia.setAdapter(adapterEvidencia);
+        } else if (actualizar) {
+            // Solo actualiza evidencias si no es null
+            List<Evidencia> nuevaLista = adapterEvidencia.getEvidencias();
+            if (nuevaLista != null) {
+                evidencias = nuevaLista;
+            }
         }
+
+        // Asegúrate de que la lista evidencias esté inicializada
+        if (evidencias == null) {
+            evidencias = new ArrayList<>();
+        }
+
+        // Añade la nueva evidencia
+        Evidencia nuevaEvidencia = new Evidencia(nombre, path, "");
+        evidencias.add(nuevaEvidencia);
+
+        // Notifica al adaptador que los datos han cambiado
+        adapterEvidencia.notifyDataSetChanged();
     }
-
-    // Asegúrate de que la lista evidencias esté inicializada
-    if (evidencias == null) {
-        evidencias = new ArrayList<>();
-    }
-
-    // Añade la nueva evidencia
-    Evidencia nuevaEvidencia = new Evidencia(nombre, path, "");
-    evidencias.add(nuevaEvidencia);
-
-    // Notifica al adaptador que los datos han cambiado
-    adapterEvidencia.notifyDataSetChanged();
-}
 
 
     private void openFilePicker() {
@@ -1743,7 +1774,6 @@ public void agregarEvidencia(String nombre, String path) {
                         adapterCargoVisitante.filter("");
                         adapterEstados.filter("");
                         adapterPQRSF.filter("");
-
                     }
                     try {
                         String resourceName = getResources().getResourceEntryName(textInputEditText.getId());
@@ -1753,6 +1783,8 @@ public void agregarEvidencia(String nombre, String path) {
                         recyclerVisible(resourceName, recycler);
                     }
 
+                }else{
+                    limpiarCampoTipoLista();
                 }
             }
         });
@@ -1769,6 +1801,30 @@ public void agregarEvidencia(String nombre, String path) {
                 }
             }
         });
+    }
+
+    public void limpiarCampoTipoLista(){
+        if (sede_id == 0 && !tie_sede.getText().toString().isEmpty()) {
+            tie_sede.setText("");
+        }if(proceso_id == 0 && !tie_proceso.getText().toString().isEmpty()){
+            tie_proceso.setText("");
+        }if(solicitante_id == 0 && !tie_solicitante.getText().toString().isEmpty()){
+            tie_solicitante.setText("");
+        }if(medio_atencion_id == 0 && !tie_tipo_atencion.getText().toString().isEmpty()){
+            tie_tipo_atencion.setText("");
+        }if(nit_id == 0 && !tie_nit.getText().toString().isEmpty()){
+            tie_nit.setText("");
+        }if(estado_pqrsf_id == 0 && !tie_estado.getText().toString().isEmpty()){
+            tie_estado.setText("");
+        }if(pqrsf_id == 0 && !tie_pqrs.getText().toString().isEmpty()){
+            tie_pqrs.setText("");
+        }if(responsable_id == 0 && !tie_responsable.getText().toString().isEmpty()){
+            tie_responsable.setText("");
+        }if(visitante_id == 0 && !tie_visitante.getText().toString().isEmpty()){
+            tie_visitante.setText("");
+        }if(cargo_visitante_id == 0 && !tie_cargo_visitante.getText().toString().isEmpty()){
+            tie_cargo_visitante.setText("");
+        }
     }
 
 
