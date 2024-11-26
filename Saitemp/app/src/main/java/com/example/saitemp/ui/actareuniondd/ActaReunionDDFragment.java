@@ -871,7 +871,7 @@ public class ActaReunionDDFragment extends Fragment {
                     }if(estado_pqrsf.isEmpty()){
                         estado_pqrsf_id = 0;
                     }if(pqrsf.isEmpty()){
-                        pqrsf_id = 0;
+                        pqrsf_id = 6;
                     }if(responsable.isEmpty()){
                         responsable_id = 0;
                     }
