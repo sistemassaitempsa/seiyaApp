@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="5dp"
-    tools:context=".ui.formularios_crm_guardados.CrmGuardadosFragment">
+    tools:context="com.saitempsa.saitemp.ui.formularios_crm_guardados.CrmGuardadosFragment">
 
 
     <androidx.recyclerview.widget.RecyclerView

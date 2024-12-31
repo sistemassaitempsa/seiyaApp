@@ -1,15 +1,15 @@
-plugins {
+ plugins {
     id("com.android.application")
 }
 
 android {
-    namespace = "com.example.saitemp"
+    namespace = "com.saitempsa.saitemp"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.saitemp"
+        applicationId = "com.saitempsa.saitemp"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 

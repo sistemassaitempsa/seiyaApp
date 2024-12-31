@@ -26,17 +26,17 @@
         android:theme="@style/Theme.AppSig2"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-        <activity android:name=".SplashActivity"
+        <activity android:name="com.saitempsa.saitemp.SplashActivity"
             android:exported="false">
             <!-- No debería tener el filtro MAIN -->
         </activity>
         <activity
-            android:name=".NavegacionActivity"
+            android:name="com.saitempsa.saitemp.NavegacionActivity"
             android:exported="false"
             android:label="@string/title_activity_navegacion"
             android:theme="@style/Theme.AppSig2.NoActionBar" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.saitempsa.saitemp.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
