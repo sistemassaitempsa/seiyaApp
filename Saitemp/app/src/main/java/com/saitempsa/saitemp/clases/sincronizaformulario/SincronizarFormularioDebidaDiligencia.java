@@ -104,7 +104,7 @@ public class SincronizarFormularioDebidaDiligencia {
 
 
             if (isNetworkAvailable()) {
-                enviarAlServidor("https://debidadiligencia.saitempsa.com:8484/aplicaciones/" +
+                enviarAlServidor("https://contratacion.saitempsa.com/aplicaciones/" +
                         "api/public/api/v1/seguimientocrm2", formulario1);
             } else {
                 Toast.makeText(context.getApplicationContext(), "No tiene conexión a internet", Toast.LENGTH_SHORT).show();
@@ -268,7 +268,7 @@ public class SincronizarFormularioDebidaDiligencia {
     }
 
     private void enviarCorreo(String formulario_id, JSONObject correos) {
-        String url = "https://debidadiligencia.saitempsa.com:8484/aplicaciones/api/public/api/v1/seguimientocrmpdf/" + formulario_id + "/1";
+        String url = "https://contratacion.saitempsa.com/aplicaciones/api/public/api/v1/seguimientocrmpdf/" + formulario_id + "/1";
         String token = getToken();
         Toast.makeText(context, "Enviando correos", Toast.LENGTH_SHORT).show();
 

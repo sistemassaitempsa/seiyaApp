@@ -161,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loginRequest(final String email, final String password) {
-        String apiUrl = " https://debidadiligencia.saitempsa.com:8484/aplicaciones/api/public/api/v1/login";
+        String apiUrl = " https://contratacion.saitempsa.com/aplicaciones/api/public/api/v1/login";
         MainActivity SSLHelper = null;
         SSLHelper.disableSSLCertificateChecking();
 
@@ -181,8 +181,6 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-
-
                             String respuesta = response.getString("status");
                             if (respuesta.equals("error")) {
                                 Toast.makeText(getBaseContext(), response.getString("message"), Toast.LENGTH_SHORT).show();
@@ -258,7 +256,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void guardaRegistroTablas() {
 
-        String url = "https://debidadiligencia.saitempsa.com:8484/aplicaciones/api/public/api/v1/tablasandroid2";
+        String url = "https://contratacion.saitempsa.com/aplicaciones/api/public/api/v1/tablasandroid2";
         ConsultaTablasApi.consultaTablasApi2(getBaseContext(), url, new ApiCallbackTablas2.ApiCallback<JSONObject>() {
             @Override
             public void onSuccess(JSONObject result) {
@@ -304,7 +302,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void verificaActualizaTablas(List<TablaPrincipal> tablas) {
-        String url = "https://debidadiligencia.saitempsa.com:8484/aplicaciones/api/public/api/v1/tablasandroid";
+        String url = "https://contratacion.saitempsa.com/aplicaciones/api/public/api/v1/tablasandroid";
         ConsultaTablasApi.consultaTablasApi(getBaseContext(), url, new ApiCallbackTablas.ApiCallback<JSONArray>() {
 
             @Override

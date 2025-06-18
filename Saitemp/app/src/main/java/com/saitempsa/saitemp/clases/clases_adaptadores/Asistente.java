@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 public class Asistente {
 
     private int id;
-
     private int formulario_id;
     private String nombre;
     private String cargo;

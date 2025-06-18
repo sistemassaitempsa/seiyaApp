@@ -813,8 +813,6 @@ public class ActaReunionDDFragment extends Fragment {
                                 }
                             }
                             compromisos.add(compromiso1);
-
-
                         }
                     }
 
@@ -1658,16 +1656,21 @@ public class ActaReunionDDFragment extends Fragment {
             if (posicionObjetoCompromiso < compromisosglobal.size()) {
                 responsableid_cierreid_compromiso.add(String.valueOf(compromisosglobal.get(posicionObjetoCompromiso).getResponsable_id()));
                 responsableid_cierreid_compromiso.add(String.valueOf(compromisosglobal.get(posicionObjetoCompromiso).getEstado_id()));
-
                 posicionObjetoCompromiso++;
-            } else {
+                Toast.makeText(getContext(), "Responsables "+responsableid_cierreid_compromiso, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "If actualizar ", Toast.LENGTH_SHORT).show();
+                Log.d("responsables",""+responsableid_cierreid_compromiso);
+            }
+            else {
                 // Si la lista es demasiado pequeña para acceder al índice, maneja el caso adecuadamente
                 responsableid_cierreid_compromiso.add("0");
                 responsableid_cierreid_compromiso.add("0");
+                Toast.makeText(getContext(), "Else actualizar ", Toast.LENGTH_SHORT).show();
             }
         } else {
             responsableid_cierreid_compromiso.add("0");
             responsableid_cierreid_compromiso.add("0");
+            Toast.makeText(getContext(), "Else sin actualizar ", Toast.LENGTH_SHORT).show();
         }
 
         adapterResponsable.setOnClickListener(new View.OnClickListener() {

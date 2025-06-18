@@ -54,7 +54,7 @@ public class ReconstruirTabla {
 
     // Función para construir la tabla (ejemplo básico)
     private static void construirTabla(String nombreTabla, Context context) throws JSONException {
-        String url = "https://debidadiligencia.saitempsa.com:8484/aplicaciones/api/public/api/v1/tablasandroid_" + nombreTabla;
+        String url = "https://contratacion.saitempsa.com/aplicaciones/api/public/api/v1/tablasandroid_" + nombreTabla;
         consultaTablasApi(context, url, new ApiCallbackTablas.ApiCallback<JSONArray>() {
 
             @Override

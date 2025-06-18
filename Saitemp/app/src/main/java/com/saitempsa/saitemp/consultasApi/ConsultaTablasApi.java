@@ -93,7 +93,7 @@ public class ConsultaTablasApi {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.e("API Error", "Error en la solicitud API: " + error.toString());
+                        Log.e("API Error ****", "Error en la solicitud API: " + error.toString());
                         callback.onError(error.toString());
                     }
                 }

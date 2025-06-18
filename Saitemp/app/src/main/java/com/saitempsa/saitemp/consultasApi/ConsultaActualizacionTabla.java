@@ -97,7 +97,7 @@ public class ConsultaActualizacionTabla {
     }
 
     public static void consultaTablasApi(Context context, final ApiCallbackTablas.ApiCallback<JSONArray> callback) {
-        String url = "https://debidadiligencia.saitempsa.com:8484/aplicaciones/api/public/api/v1/tablasandroid";
+        String url = "https://contratacion.saitempsa.com/aplicaciones/api/public/api/v1/tablasandroid";
         String token = getToken(context);
 
         // Deshabilitar la verificación del certificado SSL (si es autofirmado)

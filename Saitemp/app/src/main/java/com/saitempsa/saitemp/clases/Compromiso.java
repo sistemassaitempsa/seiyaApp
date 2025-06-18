@@ -116,4 +116,5 @@ public class Compromiso {
     public void setObservacion(String observacion) {
         this.observacion = observacion;
     }
+
 }
